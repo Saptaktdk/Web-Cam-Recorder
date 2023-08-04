@@ -95,3 +95,12 @@ video {
 .timer {
     display: none;
 }
+
+.filter-cont {
+    position: absolute;
+    top: calc((100vh - 16rem) / 2 );
+    left: 5rem;
+    height: 16rem;
+    width: 5rem;
+    background-color: aqua;
+}

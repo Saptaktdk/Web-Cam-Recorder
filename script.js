@@ -35,6 +35,7 @@ navigator.mediaDevices.getUserMedia(constraints)
         let blob = new Blob(chunks, {type: "video/mp4"});
         let videoUrl = URL.createObjectURL(blob);
 
+        //? Download functionality
         let a = document.createElement("a");
         a.href = videoUrl;
         a.download = "stream.mp4";
@@ -60,6 +61,26 @@ recordBtnCont.addEventListener("click", (e) => {
         recordBtn.classList.remove("scale-record");
         stopTimer();
     }
+})
+
+//TODO: Capture Button Implementation
+captureBtnCont.addEventListener("click", (e)=> {
+    captureBtn.classList.add("scale-capture");
+
+    let canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    let tool = canvas.getContext("2d");
+    tool.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    let imageURL = canvas.toDataURL();
+    
+    //? Download functionality
+    let a = document.createElement("a");
+    a.href = imageURL;
+    a.download = "image.jpg";
+    a.click();
 })
 
 let timerID;
@@ -95,6 +116,7 @@ function startTimer() {
     timerID = setInterval(displayTimer, 1000);
 }
 
+// TODO: Stop the timer
 function stopTimer() {
     clearInterval(timerID);
     timer.innerText = "00:00:00";
