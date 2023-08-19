@@ -4,6 +4,7 @@ let recordBtn = document.querySelector(".record-btn");
 let captureBtnCont = document.querySelector(".capture-btn-cont");
 let captureBtn = document.querySelector(".capture-btn");
 let recordFlag = false;
+let transparentColor;
 
 let recorder;
 let chunks = [] //? media data in chunks
@@ -73,7 +74,9 @@ captureBtnCont.addEventListener("click", (e)=> {
 
     let tool = canvas.getContext("2d");
     tool.drawImage(video, 0, 0, canvas.width, canvas.height);
-
+    // Filtering
+    tool.fillStyle = transparentColor;
+    tool.fillRect(0, 0, canvas.width, canvas.height);
     let imageURL = canvas.toDataURL();
     
     //? Download functionality
@@ -122,3 +125,16 @@ function stopTimer() {
     timer.innerText = "00:00:00";
     timer.style.display = "none";
 }
+
+// TODO: Filtering implementation
+let filterLayer = document.querySelector(".filter-layer");
+let allFilters = document.querySelectorAll(".filter");
+allFilters.forEach((filterElem) => {
+    filterElem.addEventListener("click", (e) => {
+        //? Get style
+        transparentColor = getComputedStyle(filterElem).getPropertyValue("background-color");
+
+        //? Set style
+        filterLayer.style.backgroundColor = transparentColor;
+    })
+})

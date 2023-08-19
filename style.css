@@ -47,12 +47,14 @@ video {
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
+    cursor: pointer;
 }
 .capture-btn {
     background-color: #fff;
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .scale-record {
@@ -118,17 +120,21 @@ video {
 
 .orange {
     background-color: #ffa50052;
+    cursor: pointer;
 }
 
 .brown {
     background-color: #a52a2a59;
+    cursor: pointer;
 }
 
 .pink {
     background-color: #ffc0cb57;
+    cursor: pointer;
 }
 .transparent {
     background-color: transparent;
+    cursor: pointer;
 }
 
 .filter-layer {
@@ -137,6 +143,5 @@ video {
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-color: #ffa50052;
     z-index: 1;
 }
