@@ -36,12 +36,13 @@ navigator.mediaDevices.getUserMedia(constraints)
         let blob = new Blob(chunks, {type: "video/mp4"});
         let videoUrl = URL.createObjectURL(blob);
 
+        //? Video Storage in the IndexedDB database
         if (db) {
             let videoId = shortid();
             let dbTransaction = db.transaction("video", "readwrite");
             let videoStore = dbTransaction.objectStore("video");
             let videoEntry = {
-                id: videoId,
+                id: `vid-${videoId}`,
                 blobData: blob
             }
             videoStore.add(videoEntry);
@@ -90,12 +91,13 @@ captureBtnCont.addEventListener("click", (e)=> {
     tool.fillRect(0, 0, canvas.width, canvas.height);
     let imageURL = canvas.toDataURL();
 
+    //? Image storage in the IndexedDB Database
     if (db) {
         let imageId = shortid();
         let dbTransaction = db.transaction("image", "readwrite");
         let imageStore = dbTransaction.objectStore("image");
         let imageEntry = {
-            id: imageId,
+            id: `img-${imageId}`,
             url: imageURL
         }
         imageStore.add(imageEntry);
