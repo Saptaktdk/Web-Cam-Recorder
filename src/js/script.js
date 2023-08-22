@@ -48,11 +48,6 @@ navigator.mediaDevices.getUserMedia(constraints)
             videoStore.add(videoEntry);
         }
 
-        //? Download functionality
-        /* let a = document.createElement("a");
-        a.href = videoUrl;
-        a.download = "stream.mp4";
-        a.click(); */
     })
 })
 
@@ -103,11 +98,10 @@ captureBtnCont.addEventListener("click", (e)=> {
         imageStore.add(imageEntry);
     }
     
-    /* //? Download functionality
-    let a = document.createElement("a");
-    a.href = imageURL;
-    a.download = "image.jpg";
-    a.click(); */
+    setTimeout(() => {
+        captureBtn.classList.remove("scale-capture");
+    }, 500);
+    
 })
 
 let timerID;
