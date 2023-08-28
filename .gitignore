@@ -128,3 +128,13 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+#credentials
+credentials/
+
+#entrypoint
+entrypoint.sh
+
+#terraform files
+terraform/service_account.json
+terraform/*.tfvars
